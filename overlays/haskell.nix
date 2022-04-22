@@ -527,6 +527,13 @@ final: prev: {
                   pkg-def-extras = args.pkg-def-extras or [];
                   modules = [ { _module.args.buildModules = final.lib.mkForce buildProject.pkg-set; } ]
                     ++ (args.modules or [])
+                    ++ (if builtins.isList projectModule then projectModule else [projectModule])
+                    ++
+                      [
+                        ({ config, lib, ... }: {
+                          _module.check = false;
+                        })
+                      ]
                     ++ final.lib.optional (args.ghcOverride != null || args.ghc != null)
                         { ghc.package = if args.ghcOverride != null then args.ghcOverride else args.ghc; }
                     ++ [ { compiler.nix-name = final.lib.mkForce args.compiler-nix-name; } ];
