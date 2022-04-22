@@ -322,7 +322,7 @@ in {
       modules = if builtins.isList m then m else [m];
       project = f
         (lib.evalModules {
-          modules = modules ++ (builtins.foldl' (b: a: (a.modules or []) ++ b) [] modules) ++ [
+          modules = modules ++ builtins.concatMap (a: a.modules or []) modules ++ [
             # Include ../modules/cabal-project.nix or ../modules/stack-project.nix
             (import ../modules/project-common.nix)
             (import projectType)
