@@ -5,6 +5,7 @@ let
     ghc = config.ghc.package;
     compiler-nix-name = config.compiler.nix-name;
     inherit (config) nonReinstallablePkgs hsPkgs compiler;
+    contentAddressed = if config ? contentAddressed.enable then config.contentAddressed else { enable=false; };
   };
 
 in
