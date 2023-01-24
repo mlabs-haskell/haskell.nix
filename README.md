@@ -1,3 +1,5 @@
+# DEPRECATDED. Use upstream https://github.com/input-output-hk/haskell.nix
+
 # `haskell.nix` is infrastructure for building Haskell packages with Nix
 
 [![](https://badge.buildkite.com/d453edcd29bd2f8f3f3b32c9b7d6777a33773d9671c37a6ccc.svg?branch=master)](https://buildkite.com/input-output-hk/haskell-dot-nix)
